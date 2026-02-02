@@ -17,7 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,8 +32,39 @@ jobs:
           node -v
           npm -v
 
+      - name: Sanity check lockfile versions
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const lock = JSON.parse(fs.readFileSync('package-lock.json','utf8'));
+          let bad = 0;
+          const pkgs = lock.packages || {};
+          for (const [path, meta] of Object.entries(pkgs)) {
+            if (path === "") continue;
+            const v = meta && meta.version;
+            if (v === "" || v == null) {
+              console.log("❌ EMPTY VERSION in lockfile package:", path, meta && meta.name);
+              bad++;
+            }
+            if (typeof v === "string" && v.trim() !== v) {
+              console.log("❌ VERSION HAS WHITESPACE:", path, JSON.stringify(v));
+              bad++;
+            }
+          }
+          if (bad) process.exit(1);
+          console.log("✅ Lockfile versions look non-empty.");
+          NODE
+
       - name: Install dependencies
         run: npm ci
+
+      - name: Print npm debug log on failure
+        if: failure()
+        run: |
+          echo "=== npm logs ==="
+          ls -la /home/runner/.npm/_logs || true
+          echo "=== tail debug log ==="
+          tail -n 200 /home/runner/.npm/_logs/*debug-0.log || true
 
       - name: Build
         run: npm run build
@@ -50,11 +80,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
