@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="How Transformers Think">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0f14" />
+      <stop offset="60%" stop-color="#0f1a1f" />
+      <stop offset="100%" stop-color="#0c1217" />
+    </linearGradient>
+    <radialGradient id="glow1" cx="0.2" cy="0" r="0.8">
+      <stop offset="0%" stop-color="rgba(255,180,87,0.25)" />
+      <stop offset="60%" stop-color="rgba(255,180,87,0)" />
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.9" cy="0.1" r="0.7">
+      <stop offset="0%" stop-color="rgba(79,209,197,0.25)" />
+      <stop offset="60%" stop-color="rgba(79,209,197,0)" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#glow1)" />
+  <rect width="1200" height="630" fill="url(#glow2)" />
+
+  <g font-family="Syne, Space Grotesk, Arial, sans-serif">
+    <text x="90" y="190" font-size="64" font-weight="700" fill="#e6edf3">How Transformers Think</text>
+    <text x="90" y="245" font-size="26" fill="#cbd5df">A live, systems-first walkthrough of attention, MLPs, and prediction.</text>
+  </g>
+
+  <g font-family="Space Grotesk, Arial, sans-serif" font-size="20" fill="#9aa7b4">
+    <text x="90" y="310">Tokenization</text>
+    <circle cx="208" cy="304" r="4" fill="#4fd1c5" />
+    <text x="230" y="310">Attention</text>
+    <circle cx="335" cy="304" r="4" fill="#ffb457" />
+    <text x="355" y="310">MLP</text>
+    <circle cx="407" cy="304" r="4" fill="#7bd389" />
+    <text x="430" y="310">Logit Lens</text>
+  </g>
+
+  <g font-family="IBM Plex Mono, monospace" font-size="16" fill="#9aa7b4">
+    <text x="90" y="535">saiprapul.github.io/transformer-viz</text>
+  </g>
+
+  <g>
+    <rect x="90" y="360" width="1020" height="120" rx="22" fill="rgba(26,35,43,0.75)" stroke="rgba(255,255,255,0.12)" />
+    <g font-family="Space Grotesk, Arial, sans-serif" font-size="18" fill="#e6edf3">
+      <text x="120" y="405">Follow how a transformer turns text into probabilities:</text>
+      <text x="120" y="440" fill="#9aa7b4">residual stream → attention routing → MLP edits → logits</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+{
+  "name": "How Transformers Think",
+  "short_name": "Transformers",
+  "start_url": "/transformer-viz/",
+  "display": "standalone",
+  "background_color": "#0b0f14",
+  "theme_color": "#0b0f14",
+  "icons": [
+    {
+      "src": "/transformer-viz/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

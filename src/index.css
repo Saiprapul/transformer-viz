@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg: 11 15 20;
+  --bg-2: 15 26 31;
+  --surface: 20 27 34;
+  --surface-2: 26 35 43;
+  --accent: 255 180 87;
+  --accent-2: 79 209 197;
+  --accent-3: 123 211 137;
+  --muted: 154 167 180;
+  --grid: 31 42 51;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  background: radial-gradient(1200px 600px at 20% -10%, rgba(255, 180, 87, 0.18), transparent 60%),
+    radial-gradient(900px 500px at 90% 10%, rgba(79, 209, 197, 0.2), transparent 60%),
+    linear-gradient(160deg, #0b0f14 0%, #0f1a1f 60%, #0c1217 100%);
+  color: #e6edf3;
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(255, 180, 87, 0.25);
+  color: #fff;
+}
+
+@layer components {
+  .glass {
+    @apply bg-surface2/80 border border-white/10 backdrop-blur-xl;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-200;
+  }
+
+  .section-card {
+    @apply glass rounded-3xl px-6 py-8 shadow-panel;
+  }
+
+  .section-title {
+    @apply font-display text-2xl md:text-3xl text-white;
+  }
+
+  .subtle {
+    @apply text-sm text-muted;
+  }
+
+  .grid-bg {
+    background-image: linear-gradient(transparent 31px, rgba(255, 255, 255, 0.04) 32px),
+      linear-gradient(90deg, transparent 31px, rgba(255, 255, 255, 0.04) 32px);
+    background-size: 32px 32px;
+  }
+
+  .narrative {
+    @apply text-base leading-7 text-slate-200 max-w-prose;
+  }
+
+  .section-content > p {
+    @apply text-base leading-7 text-slate-200 max-w-prose;
+  }
+}
+
+textarea::placeholder {
+  color: rgba(154, 167, 180, 0.7);
+}
+
+button {
+  font-family: inherit;
+}

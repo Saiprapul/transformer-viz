@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://saiprapul.github.io/transformer-viz/sitemap.xml
